@@ -78,7 +78,7 @@ Boot::
 
 Authorize auto-loading of the kernel gdb scripts::
 
-  echo "add-auto-load-safe-path ~/linux/build/torvalds/linux/scripts/gdb/vmlinux-gdb.py" >> ~/.gdbinit
+  echo "add-auto-load-safe-path ~/linux/src/torvalds/linux/scripts/gdb/vmlinux-gdb.py" >> ~/.gdbinit
 
 Debug::
 
