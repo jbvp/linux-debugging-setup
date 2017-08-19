@@ -76,6 +76,15 @@ Boot::
 
   kvm -s -kernel ~/linux/build/torvalds/linux/arch/x86_64/boot/bzImage -nographic -m 512 -drive file=~/linux/img/DebianStretch.img,index=0,media=disk -append "root=/dev/sda earlyprintk=serial,ttyS0,9600 console=ttyS0,9600n8"
 
+Authorize auto-loading of the kernel gdb scripts::
+
+  echo "add-auto-load-safe-path ~/linux/build/torvalds/linux/scripts/gdb/vmlinux-gdb.py" >> ~/.gdbinit
+
 Debug::
 
-  gdb --eval 'target remote localhost:1234' ~/linux/build/torvalds/linux/vmlinux
+  cd ~/linux/build/torvalds/linux
+  gdb --eval 'target remote localhost:1234' vmlinux
+
+Note: gdb must be started from the built kernel directory, because that's what
+the Python scripts expect. For example, the lx-symbols command executes
+"symbol-file vmlinux".

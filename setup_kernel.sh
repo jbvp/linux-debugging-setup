@@ -22,3 +22,6 @@ scripts/kconfig/merge_config.sh -r -O $BUILD_DIR/$KERNEL/ $BUILD_DIR/$KERNEL/.co
 rm /tmp/debug.config
 
 make O=$BUILD_DIR/torvalds/linux -j5
+
+# Authorize auto-loading of the kernel gdb scripts
+echo "add-auto-load-safe-path $BUILD_DIR/$KERNEL/scripts/gdb/vmlinux-gdb.py" >> ~/.gdbinit
